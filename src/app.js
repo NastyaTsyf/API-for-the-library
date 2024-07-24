@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const userRouter = require('./routes/users');
+const bookRouter = require('./routes/books');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -23,8 +24,7 @@ app.get('/', (request, response) => {
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(userRouter);
-
+app.use(userRouter, bookRouter);
 
 app.listen(PORT, () => {
     console.log(`Ссылка на сервер: ${API_URL}:${PORT}`);

@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const {getUsers, getUser, createUser, updateUser, deleteUser} = require('../controllers/users')
 
+const originalUrlLogger = require('../middlewares/originalUrlLogger')
+
+router.use(originalUrlLogger);
+
 router.get('/users', getUsers);
 router.get('/users/:user_id', getUser);
 router.post('/users', createUser);
